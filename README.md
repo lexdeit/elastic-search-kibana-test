@@ -7,10 +7,12 @@ Requisitos
 - Docker Compose
 
 ¿Qué incluye?
-- Elasticsearch 8.12.0
-- Kibana 8.12.0
+- Elasticsearch 9.0.0
+- Kibana 9.0.0
 - Red compartida entre servicios
 - Seguridad desactivada (ideal para desarrollo)
+- Docker
+- Docker Compose
 
 Estructura
 .
@@ -19,29 +21,36 @@ Estructura
 
 Uso
 
-1. Clonar el repositorio
+(Ubuntu)
+
+1.1 Instalar Docker
+Seguir los pasos de la documentacion para instalar Docker
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+
+1.2 Instalar Docker Compose
+Seguir los pasos de la documentacion para instalar Docker Compose
+https://docs.docker.com/compose/install/linux/#install-using-the-repository
+
+
+
+2.1 Clonar el repositorio
+```shell
 git clone https://github.com/tu-usuario/tu-repo.git
 cd tu-repo
+```
 
-2. Levantar los contenedores
+2.2 Crear el archivo `env` 
+```
+ELASTIC_PASSWORD=TuPasswordSegura123
+```
+
+3.1 Levantar los servicios
+```shell
 docker-compose up -d
+```
 
-Esto iniciará Elasticsearch en el puerto 9200 y Kibana en el puerto 5601.
-
-3. Verificar
-- Accede a Elasticsearch: http://localhost:9200
-- Accede a Kibana: http://localhost:5601
-
-Detener los servicios
-docker-compose down
-
-Comprobación rápida (opcional)
-Prueba la conexión a Elasticsearch desde terminal:
-curl http://localhost:9200
-
-Notas
-- Este entorno está pensado para desarrollo. No es seguro para producción ya que desactiva la autenticación.
-- Si deseas habilitar seguridad y autenticación con usuarios o API keys, se recomienda ajustar el docker-compose.yml.
-
-Licencia
-MIT
+3.2 Verifica que los contenedores estén activos:
+```bash
+docker ps
+```
