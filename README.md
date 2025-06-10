@@ -86,3 +86,12 @@ docker logs -f <NOMBRE_INSTANCIA>
 ```
 docker compose down -v
 ```
+
+
+
+## INFORMACION ADICIONAL
+
+Resetear contrasenia de ElasticSearch
+```
+docker exec -it elasticsearch-dev bin/elasticsearch-reset-password -u <USUARIO>
+```
